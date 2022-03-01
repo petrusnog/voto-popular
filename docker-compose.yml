@@ -1,0 +1,41 @@
+version: "3"
+
+networks:
+  laravel:
+
+volumes:
+  votopopular_db_data:
+
+services:
+  laravel-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        uid: ${UID}
+    container_name: laravel-server
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - mysql
+    networks:
+      - laravel
+  mysql:
+    image: mysql:5.7
+    container_name: database
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: votopopular_db
+      MYSQL_USER: lelouch
+      MYSQL_PASSWORD: SolidSn4kePa$$
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - votopopular_db_data:/var/lib/mysql
+      - ./database:/docker-entrypoint-initdb.d/init.sql
+
+    networks:
+      - laravel

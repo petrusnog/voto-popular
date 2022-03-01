@@ -1,0 +1,53 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@media screen and (min-width: 768px) {
+    /* Linha vertical à esquerda dos comentários */
+    .comentarios-container::before {
+        position: absolute;
+        display: block;
+        top: 0;
+        left: 11px;
+        content: "";
+        width: 3px;
+        height: 100%;
+        background: #e7e7e7;
+        /* opacity: .07; */
+    }
+
+    .comentario-container::before {
+        position: absolute;
+        top: 57px;
+        content: "";
+        width: 23px;
+        height: 3px;
+        background: #e7e7e7;
+        left: -67px;
+        /* opacity: .07; */
+    }
+
+    .comentario-container:last-child:after {
+        position: absolute;
+        display: block;
+        top: 60px;
+        left: -79px;
+        content: "";
+        width: 13px;
+        height: calc(100% - 60px);
+        background: theme('colors.gray-background');
+    }
+
+    .is-admin::before {
+        position: absolute;
+        width: 38px;
+        height: 38px;
+        border-radius: 38px;
+        border: 7px solid white;
+        box-shadow: 4px 4px 15px 0 rgba(36, 37, 38, 0.08);
+        left: -89px;
+        background: theme('colors.purple');
+        opacity: 1;
+        z-index: 10;
+    }
+}

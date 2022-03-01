@@ -1,0 +1,28 @@
+<?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+use App\Models\User;
+
+class IdeaFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        $random_title = $this->faker->words(4, true);
+        return [
+            'user_id' => User::factory()->create([
+                'name' => 'Noriaki Kakyoin'
+            ]),
+            'title' => ucwords($random_title),
+            'slug' => Str::slug($random_title),
+            'description' => $this->faker->paragraph(5)
+        ];
+    }
+}
