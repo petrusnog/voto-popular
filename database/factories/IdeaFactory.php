@@ -17,9 +17,7 @@ class IdeaFactory extends Factory
     {
         $random_title = $this->faker->words(4, true);
         return [
-            'user_id' => User::factory()->create([
-                'name' => 'Noriaki Kakyoin'
-            ]),
+            'user_id' => User::get()->random()->id,
             'title' => ucwords($random_title),
             'slug' => Str::slug($random_title),
             'description' => $this->faker->paragraph(5)
