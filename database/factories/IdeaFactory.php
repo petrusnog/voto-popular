@@ -19,7 +19,6 @@ class IdeaFactory extends Factory
         return [
             'user_id' => User::get()->random()->id,
             'title' => ucwords($random_title),
-            'slug' => Str::slug($random_title),
             'description' => $this->faker->paragraph(5)
         ];
     }

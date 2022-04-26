@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreIdeaRequest;
 use App\Http\Requests\UpdateIdeaRequest;
 use App\Models\Idea;
+use App\Models\User;
 
 class IdeaController extends Controller
 {
@@ -16,7 +17,7 @@ class IdeaController extends Controller
     public function index()
     {
         return view('idea.index', [
-            'ideas' => Idea::all(),
+            'ideas' => Idea::orderBy('created_at', 'desc')->simplePaginate(10),
             'categories' => ['Ciência', 'Política']
         ]);
     }
@@ -50,7 +51,12 @@ class IdeaController extends Controller
      */
     public function show(Idea $idea)
     {
-        //
+        $user = User::find($idea->user_id);
+
+        return view('idea.show', [
+            'idea' => $idea,
+            'user' => $user
+        ]);
     }
 
     /**

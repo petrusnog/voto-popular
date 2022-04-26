@@ -1,7 +1,7 @@
 <x-app-layout>
     <div>
         <div class="flex items-center font-semibold mb-5">
-            <a href="{{route('index')}}" class="flex items-center hover:underline">
+            <a href="{{route('idea.index')}}" class="flex items-center hover:underline">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
@@ -21,10 +21,10 @@
                 </div>
                 <div class="mx-4 flex flex-1 flex-col justify-between">
                     <h4 class="text-xl font-semibold mb-2">
-                        <a href="{{route('show')}}" class="hover:underline">Arroz vem por cima do feijão!</a>
+                        <a href="{{route('idea.show', $idea)}}" class="hover:underline">{{$idea->title}}</a>
                     </h4>
-                    <p class="block md:hidden text-blue font-bold uppercase text-xs w-full my-2">Keanu Reeves</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus possimus, fuga velit ipsam beatae earum ad, vero cumque voluptates nihil, rem sint laudantium esse nobis laborum quasi repellat molestias! Deserunt molestias nulla, aliquam dignissimos debitis cumque ad tempora? Reprehenderit tempore, veritatis optio nobis placeat consequuntur. Error maiores tempore cupiditate esse pariatur odit eius cumque nesciunt quo debitis, delectus enim quod quasi eaque architecto reiciendis dolore ad, blanditiis, molestiae sit voluptate ut! Rem labore aliquid alias quia optio est officia minus cumque necessitatibus! Quidem commodi esse aliquid nesciunt! Libero dicta maiores culpa nobis quisquam nemo dignissimos corrupti, eos veniam quae consectetur.</p>
+                    <p class="block md:hidden text-blue font-bold uppercase text-xs w-full my-2">{{$user->name}}</p>
+                    <p>{{$idea->description}}</p>
                     <div class="flex">
                         <button
                             @click="isOpen = !isOpen"
@@ -50,7 +50,7 @@
                     </div>
                     <div class="flex justify-between mt-6">
                         <div class="flex items-center text-gray-400 text-xs font-semibold space-x-2">
-                            <div class="hidden md:block font-bold text-gray-900">Keanu Reeves</div>
+                            <div class="hidden md:block font-bold text-gray-900">{{$user->name}}</div>
                             <div>&bull;</div>
                             <div>10 horas atrás</div>
                             <div>&bull;</div>

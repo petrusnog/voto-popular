@@ -34,11 +34,11 @@
                 </div>
                 <div class="mx-4">
                     <h4 class="text-xl font-semibold mb-2">
-                        <a href="{{route('idea.show')}}" class="hover:underline">{{ $idea->title }}</a>
+                        <a href="{{route('idea.show', $idea)}}" class="hover:underline">{{ $idea->title }}</a>
                     </h4>
                     <p class="line-clamp-3">{{ $idea->description }}</p>
                     <div class="flex">
-                        <a href="{{route('idea.show')}}" class="w-28 h-10 md:h-auto md:w-20 items-center font-bold text-xs rounded-xl px-2 transition duration-150 ease-in bg-gray-300 hover:bg-gray-400 mt-4 mr-2 flex items-center justify-center">Ver mais</a>
+                        <a href="{{route('idea.show', $idea)}}" class="w-28 h-10 md:h-auto md:w-20 items-center font-bold text-xs rounded-xl px-2 transition duration-150 ease-in bg-gray-300 hover:bg-gray-400 mt-4 mr-2 flex items-center justify-center">Ver mais</a>
                         <button
                             x-on:click="isOpen = !isOpen"
                             class="relative items-center font-bold text-xs text-gray-400 rounded-xl px-2 transition duration-150 ease-in bg-gray-200 hover:bg-gray-300 mt-4"
@@ -93,4 +93,8 @@
         </div> <!-- END idea-container -->
     @endforeach
     </div><!-- END ideas-container -->
+
+    <div class="my-8">
+            {{ $ideas->links() }}
+    </div>
 </x-app-layout>

@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Jenssegers\Date\Date;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Idea extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     public function user()
     {
@@ -27,5 +28,14 @@ class Idea extends Model
         Date::setLocale('pt');
         
         return Date::createFromFormat('Y-m-d H:i:s', $date);
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 }
