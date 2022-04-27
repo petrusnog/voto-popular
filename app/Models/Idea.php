@@ -11,6 +11,8 @@ class Idea extends Model
 {
     use HasFactory, Sluggable;
 
+    public const IDEAS_PER_PAGE = 10;
+
     public function user()
     {
         return $this->belongsTo(User::class);

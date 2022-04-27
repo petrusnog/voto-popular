@@ -16,6 +16,7 @@ class IdeaFactory extends Factory
     public function definition()
     {
         $random_title = $this->faker->words(4, true);
+        
         return [
             'user_id' => User::get()->random()->id,
             'title' => ucwords($random_title),
