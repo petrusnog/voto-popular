@@ -24,6 +24,12 @@
     @foreach ($ideas as $idea)
         <div
             x-data="{ isOpen: false }" 
+            x-on:click="const target = $event.target.tagName.toLowerCase()
+                const ideaLink = $event.target.closest('.idea-container').querySelector('.idea-link')
+                const ignores = ['button', 'a', 'input', 'select', 'textarea', 'svg', 'path']
+                if (ignores.includes(target)) return
+                ideaLink.click()
+            "
             class="idea-container bg-white rounded-xl flex flex-col md:flex-row justify-between px-4 py-4 md:py-6 hover:shadow-md duration-150 ease-in md:cursor-pointer mb-5"
         >
             <div class="about-component flex mb-4 md:mb-0">
@@ -34,7 +40,7 @@
                 </div>
                 <div class="mx-4">
                     <h4 class="text-xl font-semibold mb-2">
-                        <a href="{{route('idea.show', $idea)}}" class="hover:underline">{{ $idea->title }}</a>
+                        <a href="{{route('idea.show', $idea)}}" class="idea-link hover:underline">{{ $idea->title }}</a>
                     </h4>
                     <p class="line-clamp-3">{{ $idea->description }}</p>
                     <div class="flex">
