@@ -5,6 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\Category;
 
 class IdeaFactory extends Factory
 {
@@ -19,6 +20,7 @@ class IdeaFactory extends Factory
         
         return [
             'user_id' => User::get()->random()->id,
+            'category_id' => Category::get()->random()->id,
             'title' => ucwords($random_title),
             'description' => $this->faker->paragraph(5)
         ];

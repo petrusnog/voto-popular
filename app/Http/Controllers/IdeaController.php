@@ -17,7 +17,9 @@ class IdeaController extends Controller
     public function index()
     {
         return view('idea.index', [
-            'ideas' => Idea::orderBy('created_at', 'desc')->simplePaginate(Idea::IDEAS_PER_PAGE),
+            'ideas' => Idea::with('user', 'category')
+                    ->orderBy('created_at', 'desc')
+                    ->simplePaginate(Idea::IDEAS_PER_PAGE),
             'categories' => ['Ciência', 'Política']
         ]);
     }

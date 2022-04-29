@@ -39,6 +39,9 @@
                     </a>
                 </div>
                 <div class="mx-4">
+                    <div class="flex">
+                        <div class="idea-category text-gray-400">{{$idea->category->name}}</div>
+                    </div>
                     <h4 class="text-xl font-semibold mb-2">
                         <a href="{{route('idea.show', $idea)}}" class="idea-link hover:underline">{{ $idea->title }}</a>
                     </h4>
@@ -64,8 +67,6 @@
                     <div class="flex justify-between mt-6">
                         <div class="flex items-center text-gray-400 text-xs font-semibold space-x-2">
                             <div>{{$idea->created_at->diffForHumans()}}</div>
-                            <div>&bull;</div>
-                            <div>Geral</div>
                             <div>&bull;</div>
                             <div>3 comentários</div>
                         </div>

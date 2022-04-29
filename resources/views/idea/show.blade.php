@@ -20,6 +20,9 @@
                     </a>
                 </div>
                 <div class="mx-4 flex flex-1 flex-col justify-between">
+                    <div class="flex">
+                        <div class="idea-category text-gray-400">{{$idea->category->name}}</div>
+                    </div>
                     <h4 class="text-xl font-semibold mb-2">
                         <a href="{{route('idea.show', $idea)}}" class="hover:underline">{{$idea->title}}</a>
                     </h4>
@@ -53,8 +56,6 @@
                             <div class="hidden md:block font-bold text-gray-900">{{$user->name}}</div>
                             <div>&bull;</div>
                             <div>10 horas atrás</div>
-                            <div>&bull;</div>
-                            <div>Geral</div>
                             <div>&bull;</div>
                             <div class="text-gray-900">3 comentários</div>
                         </div>

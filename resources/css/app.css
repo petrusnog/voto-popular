@@ -51,3 +51,10 @@
         z-index: 10;
     }
 }
+
+.idea-category {
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
