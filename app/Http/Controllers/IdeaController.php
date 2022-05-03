@@ -42,7 +42,8 @@ class IdeaController extends Controller
      */
     public function store(StoreIdeaRequest $request)
     {
-        //
+        $token = $request->session()->token();
+        dd($token);
     }
 
     /**

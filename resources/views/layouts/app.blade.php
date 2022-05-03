@@ -52,30 +52,52 @@
                 <div class="border-2 md:sticky md:top-8 rounded-xl md:mt-16 bg-white py-3 px-3">
                     <div class="text-center px-6 py-2 pt-6">
                         <h3 class="font-semibold text-base">Criar uma votação</h3>
-                        <p class="text-xs mt-4">Você pode criar uma votação para qualquer coisa, o limite é a sua imaginação!</p>
+                        @auth
+                            <p class="text-xs mt-4">Você pode criar uma votação para qualquer coisa, o limite é a sua imaginação!</p>
+                        @else
+                            <p class="text-xs mt-4">Cadastre-se ou realize seu login para criar ideias incríveis, e iniciar uma votação!</p>
+                        @endauth
                     </div>
 
-                    <form action="#" method="POST" class="space-y-4 py-6">
-                        <div>
-                            <input type="text" name="title_add" class="w-full h-10 border-none bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2 placeholder:text-xs" placeholder="Título da votação">
+                    @auth
+                        <form action="{{route('idea.store')}}" method="POST" class="space-y-4 py-6">
+                            @csrf
+                            <div>
+                                <input type="text" name="title_add" class="w-full h-10 border-none bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2 placeholder:text-xs" placeholder="Título da votação">
+                            </div>
+                            <div>
+                                <select name="category_add" class="w-full h-10 border-none bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2 text-xs">
+                                    <option value="">Categoria</option>
+                                    <option value="">Categoria</option>
+                                    <option value="">Categoria</option>
+                                </select>
+                            </div>
+                            <div>
+                                <textarea type="text" name="description_add" class="w-full h-40 resize-none border-none bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2 placeholder:text-xs" placeholder="Descreva a sua votação"></textarea>
+                            </div>
+                            <button type="submit" class="bg-blue text-white font-semibold w-full h-10 rounded-xl border-2 border-blue hover:bg-white hover:text-blue transition duration-150 ease-in flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span class="ml-2">Publicar</span>
+                            </button>
+                        </form>
+                    @else
+                        <div class="flex flex-col md:flex-row">
+                            <a href="{{route('login')}}" class="bg-blue text-white font-semibold w-full h-10 rounded-xl border-2 border-blue hover:bg-white hover:text-blue transition duration-150 ease-in flex items-center justify-center my-3 md:mr-3 md:w-1/2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span class="ml-2 md:text-xs">Fazer Login</span>
+                            </a>
+                            <a href="{{route('register')}}" class="bg-gradient-to-r from-gray-300 to-gray-200 hover:from-gray-200 hover:to-gray-300 font-semibold w-full h-10 rounded-xl transition duration-150 ease-in flex items-center justify-center my-3 md:w-1/2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                                </svg>
+                                <span class="ml-2 md:text-xs">Cadastre-se</span>
+                            </a>
                         </div>
-                        <div>
-                            <select name="category_add" class="w-full h-10 border-none bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2 text-xs">
-                                <option value="">Categoria</option>
-                                <option value="">Categoria</option>
-                                <option value="">Categoria</option>
-                            </select>
-                        </div>
-                        <div>
-                            <textarea type="text" name="description_add" class="w-full h-40 resize-none border-none bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2 placeholder:text-xs" placeholder="Descreva a sua votação"></textarea>
-                        </div>
-                        <button type="submit" class="bg-blue text-white font-semibold w-full h-10 rounded-xl border-2 border-blue hover:bg-white hover:text-blue transition duration-150 ease-in flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <span class="ml-2">Publicar</span>
-                        </button>
-                    </form>
+                    @endauth
                 </div>
             </div>
             <div class="w-full px-4 md:px-0 md:w-175">
