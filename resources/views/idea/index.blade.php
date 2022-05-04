@@ -4,7 +4,7 @@
             <select name="category" id="category" class="w-full rounded-xl pl-4 pr-10 py-2 border-none">
                 <option class="pr-4" value="">Todas as categorias</option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category }}">{{ $category }}</option>
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>

@@ -6,6 +6,7 @@ use App\Http\Requests\StoreIdeaRequest;
 use App\Http\Requests\UpdateIdeaRequest;
 use App\Models\Idea;
 use App\Models\User;
+use App\Models\Category;
 
 class IdeaController extends Controller
 {
@@ -20,7 +21,7 @@ class IdeaController extends Controller
             'ideas' => Idea::with('user', 'category')
                     ->orderBy('created_at', 'desc')
                     ->simplePaginate(Idea::IDEAS_PER_PAGE),
-            'categories' => ['Ciência', 'Política']
+            'categories' => Category::all()
         ]);
     }
 
@@ -42,8 +43,7 @@ class IdeaController extends Controller
      */
     public function store(StoreIdeaRequest $request)
     {
-        $token = $request->session()->token();
-        dd($token);
+        //
     }
 
     /**

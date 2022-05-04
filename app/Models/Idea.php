@@ -13,6 +13,18 @@ class Idea extends Model
 
     public const IDEAS_PER_PAGE = 10;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'user_id',
+        'category_id',
+        'title',
+        'description'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
