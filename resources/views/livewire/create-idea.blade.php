@@ -4,14 +4,16 @@
         @error('title') <span class="text-red text-xs ml-1">{{ $message }}</span> @enderror
     </div>
     <div>
-        @if(!$categories->isEmpty())
-            <select wire:model="category" name="idea_category_id" class="w-full h-10 border-none bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2 text-xs">
+        <select wire:model="category" name="idea_category_id" class="w-full h-10 border-none bg-gray-100 rounded-xl placeholder-gray-900 px-4 py-2 text-xs"  required @if($categories->isEmpty()) disabled @endif>
+            @if(!$categories->isEmpty())
                 @foreach ($categories as $category)
                     {{ $category }}
                     <option value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach
-            </select>
-        @endif
+            @else
+                <option class="text-gray-600" value="">Nenhuma categoria cadastrada</option>
+            @endif
+        </select>
         @error('category_id') <span class="text-red text-xs ml-1">{{ $message }}</span> @enderror
     </div>
     <div>

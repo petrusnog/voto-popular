@@ -23,6 +23,8 @@ class CreateIdea extends Component
 
     protected $messages = [
         'title.required' => 'Campo obrigatório',
+        'category_id.required' => 'Campo obrigatório',
+        'category_id.integer' => 'Campo deve ser um número inteiro',
         'title.min' => 'Deve ter no mínimo 6 caracteres',
         'description.required' => 'Campo obrigatório',
     ];
