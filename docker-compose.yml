@@ -22,6 +22,14 @@ services:
       - mysql
     networks:
       - laravel
+    command: >
+     bash -c "php artisan key:generate &&
+              php artisan db:seed &&
+              chown -R www-data:www-data /var/www/html/storage &&
+              chmod -R 775 /var/www/html/storage &&
+              chown -R www-data:www-data /var/www/html/bootstrap/cache
+              chmod -R 775 /var/www/html/bootstrap/cache
+              apache2-foreground"
   mysql:
     image: mysql:5.7
     container_name: database
