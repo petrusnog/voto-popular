@@ -3,7 +3,8 @@ Voting application, built with Laravel + Tailwind CSS.
 ## Build Setup
 ```shell
     composer install
-    npm run install
+    npm install
     npm run dev
-    php artisan migrate
+    cp .env.example .env
+    docker compose up -d --build
 ```
